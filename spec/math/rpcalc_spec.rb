@@ -17,7 +17,7 @@ module Math
     end
 
     context "When a correct input is given" do
-      it "must give the correct answer" do
+      it "must give the correct answer for integer expressions" do
         r = @c.calc('2 3 + 4 *')
         r.should eq 20
         @c.stack.should eq []
