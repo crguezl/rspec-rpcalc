@@ -11,8 +11,8 @@ module Math
       expr.split(/\s+/).each do |x|
       case x
         when '+', '*', '-', '/' 
-          op2 = @stack.pop
-          op1 = @stack.pop
+          op2 = @stack.pop or raise SyntaxError, "No first argument for '#{x}'"
+          op1 = @stack.pop or raise SyntaxError, "No second argument for '#{x}'"
           @stack.push eval "(#{op1} #{x} #{op2})"
         when /^-?\s*\d+(\.\d+)?([eE][+-]?\d+)?\s*$/
           @stack.push x
