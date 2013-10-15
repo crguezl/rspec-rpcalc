@@ -7,9 +7,12 @@ module Math
     end
 
     context "When an erroneous input is given" do
+      before :each do
+        @e = proc { @c.calc('a') }
+      end
       it "must raise an exception" do
-        expect { @c.calc('a') }.to raise_error(SyntaxError)
-        expect { @c.calc('a') }.to raise_error("Error. found 'a'. Expected number or operator")
+        expect { @e[] }.to raise_error(SyntaxError)
+        expect { @e[] }.to raise_error("Error. found 'a'. Expected number or operator")
       end
     end
   end
